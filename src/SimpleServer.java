@@ -27,6 +27,8 @@ public class SimpleServer {
             clients.add(client);
 
             System.out.printf("%s connected!", client.getName());
+
+            //8 сообщаем всем что присоединился новый клиент
             sendToAll(client, "К чату присоединился: " + client.getName());
             // запускаем поток
             Thread thread = new Thread(client);
@@ -34,7 +36,7 @@ public class SimpleServer {
         }
     }
 
-    //6 Проходимся по списку всех клиентов, игнорирую того - кто отправил и вызываем метод preintMessage.
+    //6 Проходимся по списку всех клиентов, игнорирую того - кто отправил и вызываем метод printMessage.
     public static void sendToAll (Client client, String message) {
         for (Client cl : clients) {
             if (cl.equals(client)) {
